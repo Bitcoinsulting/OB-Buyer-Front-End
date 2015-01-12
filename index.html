@@ -4,12 +4,14 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet"      
+
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!--    <link rel="stylesheet"      
+
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/angular.js"></script>
-    <script src="js/angular-route.js"></script>
-    <script src="js/main.js"></script>
+    <title>My Page</title>
   </head>
 
   <body>
@@ -32,29 +34,47 @@
         </div>
       </div>
     </div>
-    <!-- Overlay for the store  -->
+
+
+
+
+    <!-- code for the store, is also found under store.html -->
     <div id="overlay" ng-app='store'></div>
 
+    <div class="container" ng-app="store" id="app">
+      <script src="js/angular.js"></script>
+      <script src="js/angular-route.js"></script>
+      <script src="js/main.js"></script>
+      <div class="row">
+        <div class="col">
+     
+          <button onclick=toggleStore()>Close Store</button>
+          <!-- I can't get the store's navbar and footer to show up! -->
+          <ng-include src="'navbar.html'"></ng-include>
+          <div ng-view></div>
+          <ng-include src="'footer.html'"></ng-include>
+        </div>
+      </row>
+    </div>
     <script>
-      function $(elementID) {
+      function $select(elementID) {
           var result = document.getElementById(elementID);
           return result;
           }
 
       function toggleStore() {
-          // load the store into the page using ng-include (CAN'T GET THIS TO WORK)
-          var store = "<ng include src=&quot;'modal/store.html'&quot;><ng-include>"
-          if ($("overlay").style.display === 'none') {
-              $("overlay").style.display = 'block';
-              $("overlay").innerHTML = store;
+          if ($select("overlay").style.display === 'none') {
+              $select("overlay").style.display = 'block';
+              $select("app").style.display = 'block';
               }
           else {
-              $("overlay").innerHTML = '';
-              $("overlay").style.display = 'none';
+              $select("overlay").innerHTML = '';
+              $select("overlay").style.display = 'none';
+              $select("app").style.display = 'none';
               }
           }
     </script>
-
+    <!-- End of the store code -->
   </body>
 
 </html>
