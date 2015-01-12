@@ -1,0 +1,64 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <link rel="stylesheet"      
+
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!--    <link rel="stylesheet"      
+
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+
+  <body>
+    
+    <div class="navbar">
+      <ul>
+        <h1><a href="#">My Page</a></h1>
+        <li><a href="#">Tab</a></li>
+        <li><a href="#">Tab</a></li>
+        <li><a href="#">Tab</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+
+          <button onclick=toggleStore()>Open Store!</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay" ng-app='store'></div>
+
+    <script>
+      function $(elementID) {
+          var result = document.getElementById(elementID);
+          return result;
+          }
+
+      function toggleStore() {
+          // load the store into the page using ng-include (CAN'T GET THIS TO WORK)
+          var store = "<ng include src=&quot;'modal/store.html'&quot;><ng-include>"
+          if ($("overlay").style.display === 'none') {
+              $("overlay").style.display = 'block';
+              $("overlay").innerHTML = store;
+              }
+          else {
+              $("overlay").innerHTML = '';
+              $("overlay").style.display = 'none';
+              }
+          }
+    </script>
+
+  </body>
+
+</html>
