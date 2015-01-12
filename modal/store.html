@@ -1,9 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
+    <div id="overlay" ng-app='store'></div>
+
+    <div class="container" ng-app="store" id="app">
+      <script src="js/angular.js"></script>
+      <script src="js/angular-route.js"></script>
+      <script src="js/main.js"></script>
+      <div class="row">
+        <div class="col">
      
-    <button onclick=toggleStore()>Close Store</button>
-    
+          <button onclick=toggleStore()>Close Store</button>
+          <!-- I can't get the store's navbar and footer to show up! -->
+          <ng-include src="'navbar.html'"></ng-include>
+          <div ng-view></div>
+          <ng-include src="'footer.html'"></ng-include>
+        </div>
+      </row>
     </div>
-  </row>
-</div>
+    <script>
+      function $select(elementID) {
+          var result = document.getElementById(elementID);
+          return result;
+          }
+
+      function toggleStore() {
+          if ($select("overlay").style.display === 'none') {
+              $select("overlay").style.display = 'block';
+              $select("app").style.display = 'block';
+              }
+          else {
+              $select("overlay").innerHTML = '';
+              $select("overlay").style.display = 'none';
+              $select("app").style.display = 'none';
+              }
+          }
+    </script>
