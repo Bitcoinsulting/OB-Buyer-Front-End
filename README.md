@@ -7,4 +7,4 @@ Usage:
 index.html is just a shell website where the store would be loaded, this would be replaced by the website of whoever is using the plugin.
 
 TODO:
-*Fix the store overlay and start working on the store views.
+*Fix the store views.
